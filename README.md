@@ -33,9 +33,6 @@ ChatterBot is a sleek, production-ready chatbot web app built with **Next.js**, 
 
 ## 📸 Demo
 
-![chatterbot-light](https://your-screenshot-link.com/light-mode.png)  
-![chatterbot-dark](https://your-screenshot-link.com/dark-mode.png)
-
 > 🎥 [Click here to watch the live demo](https://chatterbot-assignment.vercel.app/)
 
 ---
