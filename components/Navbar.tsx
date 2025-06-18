@@ -3,6 +3,7 @@ import { Download } from "lucide-react"
 import { useChatStore } from "@/lib/chat-store"
 import Themetoggle from "./theme-toggle"
 import Logo from "./Logo"
+import { LogoutButton } from "./logout"
 
 export function Navbar() {
   const messages = useChatStore((state) => state.messages)
@@ -37,7 +38,7 @@ export function Navbar() {
           Export Chat
         </Button>
         <Themetoggle />
-        
+        <LogoutButton />
       </div>
     </section>
   )

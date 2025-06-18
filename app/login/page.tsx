@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-
+import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
@@ -52,14 +52,14 @@ export default function LoginPage() {
 
   return (
     <section className="max-w-sm mx-auto mt-24">
-      <div className="w-full flex justify-between items-center mb-6 px-6 py-4">
+      <div className="w-full px-6 py-4">
         <div className="flex items-center gap-2">
           <Logo width={44} height={44} />
            <h1 className="text-2xl font-bold font-mono">ChatterBot</h1>
         </div>
         <Themetoggle />
       </div>
-      <div className="flex justify-center items-center flex-col">
+      <div className="flex justify-center items-center flex-col border-border">
        
         <h1 className="text-2xl font-bold text-center mb-6">Login</h1>
 
@@ -96,7 +96,7 @@ export default function LoginPage() {
               </FormItem>
             )}
           />
-
+<Link href='/login' className="text-primary text-right underline">Don't have an account?</Link>
           <Button type="submit" className="w-full">
             Login
           </Button>
