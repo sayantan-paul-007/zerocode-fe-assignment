@@ -17,7 +17,9 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 
-// Form schema
+import Logo from "@/components/Logo"
+import Themetoggle from "@/components/theme-toggle"
+
 const formSchema = z.object({
   username: z.string().min(1, "Username is required"),
   password: z.string().min(6, "Password must be at least 6 characters"),
@@ -51,7 +53,15 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="max-w-sm mx-auto mt-24">
+    <section className="max-w-sm mx-auto mt-24">
+      <div className="w-full flex justify-between items-center mb-6 px-6 py-4">
+              <div className="flex items-center gap-2">
+                <Logo width={44} height={44} />
+                 <h1 className="text-2xl font-bold font-mono">ChatterBot</h1>
+              </div>
+              <Themetoggle />
+            </div>
+            <div className="flex justify-center items-center flex-col">
       <h1 className="text-2xl font-bold text-center mb-6">Register</h1>
 
       <Form {...form}>
@@ -93,6 +103,7 @@ export default function RegisterPage() {
           </Button>
         </form>
       </Form>
-    </div>
+      </div>
+    </section>
   )
 }
