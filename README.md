@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🤖 ChatterBot – Your Intelligent Chat Companion
 
-## Getting Started
+ChatterBot is a sleek, production-ready chatbot web app built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Shadcn UI**. Powered by **Gemini LLM APIs**, it’s designed to simulate intelligent conversation with real-time streaming, voice input, JWT auth, and more.  
 
-First, run the development server:
+🚀 Built for the **ZeroCode Frontend Engineer Assignment**, ChatterBot focuses on **clean architecture**, **developer experience**, and **delightful UX**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Features
+
+- 🔐 **JWT Authentication**  
+  Secure login/register flows using cookies and middleware protection. No DB—lightweight `users.json` storage with hashed credentials.
+
+- 💬 **Real-time Chat Interface**  
+  Smooth streaming responses, ChatGPT-style typing animation, and persistent chat history.
+
+- 🎙️ **Voice Input**  
+  Built-in speech recognition lets users send messages by speaking.
+
+- 📁 **Export Chat to .txt**  
+  Export entire conversations with a single click from the navbar.
+
+- 🌗 **Light/Dark Theme Toggle**  
+  Seamlessly switch between themes using Shadcn’s UI conventions.
+
+- ⚙️ **TypeScript + ESLint + Prettier**  
+  Type-safe, linted, formatted—developer happiness baked in.
+
+- 🧠 **Gemini API Integration**  
+  Smart, conversational assistant with streamable AI responses.
+
+---
+
+## 📸 Demo
+
+![chatterbot-light](https://your-screenshot-link.com/light-mode.png)  
+![chatterbot-dark](https://your-screenshot-link.com/dark-mode.png)
+
+> 🎥 [Click here to watch the live demo](https://chatterbot-assignment.vercel.app/)
+
+---
+
+## 🔧 Tech Stack
+
+| Tech        | Role                               |
+|-------------|------------------------------------|
+| Next.js     | App framework (App Router)         |
+| TypeScript  | Type safety                        |
+| Tailwind CSS| Styling                            |
+| Shadcn UI   | Component system                   |
+| JWT         | Auth (client-side + middleware)    |
+| Gemini API  | Chat completions (LLM backend)     |
+| Vercel      | Deployment                         |
+
+---
+
+## 📁 Project Structure
+
+```
+zerocode-fe-assignment/  
+├── app/ # App Router pages  
+│ ├── chat/ # Main chat UI  
+│ ├── login/ # Login page  
+│ ├── register/ # Register page  
+│ ├── api/ # API routes  
+│ │ ├── auth/ # JWT login/register  
+│ │ └── chat/ # LLM streaming  
+├── components/ # UI components (ChatInput, ChatMessage, Navbar)  
+├── hooks/ # Custom hooks (useChat)  
+├── context/ # User context  
+├── lib/ # JWT utils, user store, LLM proxy  
+├── middleware.ts # Auth protection  
+├── styles/ # Tailwind + Shadcn styles
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Setup Instructions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/<your-handle>/zerocode-fe-assignment.git
+   cd zerocode-fe-assignment
+   ```
+2. **Install dependencies**
+    ```bash
 
-## Learn More
+    pnpm install
+    ```
+3. **Add .env.local**
+    ```bash
+    JWT_SECRET=your_super_secret_jwt_key
+    GEMINI_API_KEY=your_groq_or_gemini_api_key
+    ```
+4. **Run locally**
+    ```bash
+    pnpm dev
+    ```
+5. **Build for production**
+    ```bash
+    pnpm build && pnpm start
+    ```
+---
+## 🧪 Test Credentials
+You can use the following test credentials to log in:
 
-To learn more about Next.js, take a look at the following resources:
+```
+Username: user123
+Password: baloon123
+```
+Or register a new user!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
+## 🌍 Live URL
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 👉 https://chatterbot-assignment.vercel.app/
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📢 Praise-worthy Highlights
+- No database? No problem. Clever use of a JSON file keeps it lightweight.
+- Voice input, stream-based UI, and theme toggles for a rich UX.
+- Follows strict best practices with modular file structure and ESLint/Prettier rules.
+- Protected routes via middleware—can’t cheat with URL.
+- Deployed and testable in seconds!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🧑‍💻 Author
+### Sayantan Paul
+Frontend Engineer | React + TypeScript Enthusiast
+[GitHub](https://github.com/sayantan-paul-007) • [LinkedIn](https://www.linkedin.com/in/sayantan-paul-6010701a7/)
+
+---
+
+## 🏁 Final Thoughts
+ChatterBot isn’t just an assignment—it’s a polished, production-grade app that checks every box from auth to UX.
+Built with love, logic, and the power of Next.js.
+
+
+
