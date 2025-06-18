@@ -14,9 +14,9 @@ const { theme, setTheme } = useTheme();
    {mounted && (
         <button className="p-2 rounded-full" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
           {theme === 'light' ? (
-            <Moon size={24} />
+            <Moon size={24} className="text-primary" />
           ) : (
-            <Sun size={24} />
+            <Sun size={24} className="text-primary" />
           )}
         </button> )}
    </>

@@ -1,17 +1,18 @@
-import { useState } from "react"
+"use client"
 
-type Message = {
-  role: "user" | "assistant"
-  content: string
-}
+import { useState } from "react"
+import { useChatStore, Message } from "@/lib/chat-store"
 
 export function useChat() {
-  const [messages, setMessages] = useState<Message[]>([])
+  const { messages, addMessage, replaceLastMessage } = useChatStore()
   const [isLoading, setIsLoading] = useState(false)
 
   const sendMessage = async (text: string) => {
-    const userMessage: Message = { role: "user", content: text }
-    setMessages((prev) => [...prev, userMessage])
+    const userMsg: Message = { role: "user", content: text }
+    const thinkingMsg: Message = { role: "assistant", content: "Thinking…" }
+
+    addMessage(userMsg)
+    addMessage(thinkingMsg)
     setIsLoading(true)
 
     try {
@@ -22,10 +23,14 @@ export function useChat() {
       })
       const data = await res.json()
 
-      const botMessage: Message = { role: "assistant", content: data.reply }
-      setMessages((prev) => [...prev, botMessage])
-    } catch (err) {
-      console.error(err)
+      const botMsg: Message = { role: "assistant", content: data.reply }
+      replaceLastMessage(botMsg)
+    } catch (e) {
+      replaceLastMessage({
+        role: "assistant",
+        content: "⚠️ Sorry, something went wrong.",
+      })
+      console.error(e)
     } finally {
       setIsLoading(false)
     }

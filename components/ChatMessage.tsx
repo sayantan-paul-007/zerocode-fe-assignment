@@ -1,8 +1,9 @@
 "use client"
 import ReactMarkdown from "react-markdown"
 import { cn } from "@/lib/utils"
-import { Avatar } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useEffect, useState } from "react"
+import Logo from "./Logo"
 
 type ChatMessageProps = {
   role: "user" | "assistant"
@@ -28,13 +29,13 @@ export function ChatMessage({ role, content}: ChatMessageProps) {
   }, [content, isUser])
 
   return (
-    <div className={cn(" flex items-start gap-3", isUser ? "justify-end" : "justify-start")}>
-      {!isUser && <Avatar className="bg-muted">🤖</Avatar>}
+    <article className={cn(" flex items-start gap-3", isUser ? "justify-end" : "justify-start")}>
+      {!isUser && <Logo width={28} height={28}></Logo>}
      
       <div
         className={cn(
-          "max-w-[80%] rounded-lg px-4 py-2 text-sm whitespace-normal leading-relaxed",
-          isUser ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+          "max-w-[70%] rounded-lg px-4 py-2 text-sm whitespace-normal leading-relaxed",
+          isUser ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"
         )}
       >
         <ReactMarkdown>
@@ -42,7 +43,10 @@ export function ChatMessage({ role, content}: ChatMessageProps) {
           
         </ReactMarkdown>
        </div>
-      {isUser && <Avatar className="bg-primary text-primary-foreground">🧑</Avatar>}
-    </div>
+      {isUser && <Avatar>
+  <AvatarImage src="https://github.com/shadcn.png" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>}
+    </article>
   )
 }

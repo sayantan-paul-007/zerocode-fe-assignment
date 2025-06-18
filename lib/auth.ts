@@ -1,36 +1,15 @@
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import { cookies } from 'next/headers';
+import jwt from "jsonwebtoken"
+import bcrypt from "bcryptjs"
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-dev-secret';
+const JWT_SECRET = process.env.JWT_SECRET!
 
-export function hashPassword(password: string) {
-  return bcrypt.hashSync(password, 10);
-}
+type JwtPayload = { username: string }
 
-export function verifyPassword(password: string, hash: string) {
-  return bcrypt.compareSync(password, hash);
-}
+export const signToken = (payload: JwtPayload) =>
+  jwt.sign(payload, JWT_SECRET, { expiresIn: "2h" })
 
-export function generateJWT(payload: { id: string; email: string }) {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: '7d' });
-}
+export const verifyToken = (token: string) =>
+  jwt.verify(token, JWT_SECRET) as JwtPayload
 
-export function verifyJWT(token: string): { id: string; email: string } | null {
-  try {
-    return jwt.verify(token, JWT_SECRET) as { id: string; email: string };
-  } catch {
-    return null;
-  }
-}
-
-export async function setTokenCookie(token: string) {
-  const cookieStore = await cookies();
-
-  cookieStore.set('token', token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    path: '/',
-    maxAge: 60 * 60 * 24 * 7, // 1 week
-  });
-}
+export const hashPassword = (pw: string) => bcrypt.hashSync(pw, 10)
+export const comparePassword = (pw: string, hash: string) => bcrypt.compareSync(pw, hash)

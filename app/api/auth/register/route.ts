@@ -1,26 +1,24 @@
-import { NextResponse } from 'next/server';
-import { users } from '@/lib/userStore';
-import { hashPassword, generateJWT, setTokenCookie } from '@/lib/auth';
-import { v4 as uuidv4 } from 'uuid';
+import { NextResponse } from "next/server"
+import { addUser, getUserHash } from "@/lib/userStore"
+import { hashPassword, signToken } from "@/lib/auth"
 
 export async function POST(req: Request) {
-  const { email, password } = await req.json();
+  const { username, password } = await req.json()
 
-  const existing = users.find(u => u.email === email);
-  if (existing) {
-    return NextResponse.json({ error: 'Email already registered' }, { status: 400 });
-  }
+  if (getUserHash(username))
+    return NextResponse.json({ error: "User exists" }, { status: 400 })
 
-  const newUser = {
-    id: uuidv4(),
-    email,
-    passwordHash: hashPassword(password),
-  };
+  const hash = hashPassword(password)
+  addUser(username, hash)
 
-  users.push(newUser);
-
-  const token = generateJWT({ id: newUser.id, email: newUser.email });
-  setTokenCookie(token);
-
-  return NextResponse.json({ message: 'Registered successfully' });
+  const jwt = signToken({ username })
+  const res = NextResponse.json({ ok: true })
+  res.cookies.set("token", jwt, {
+  httpOnly: true,
+  path: "/",
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "lax",
+  maxAge: 60 * 60 * 24 * 7,
+})
+  return res
 }

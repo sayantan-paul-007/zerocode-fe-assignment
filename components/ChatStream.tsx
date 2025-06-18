@@ -10,6 +10,7 @@ type Message = {
 }
 
 export function ChatStream({ messages }: { messages: Message[] }) {
+  
   const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -17,7 +18,7 @@ export function ChatStream({ messages }: { messages: Message[] }) {
   }, [messages])
 
   return (
-    <ScrollArea className="h-screen p-4">
+    <ScrollArea className="h-screen bg-background  p-4">
       <div className="space-y-4">
         {messages.map((msg, i) => (
           <ChatMessage key={i} role={msg.role} content={msg.content} />
