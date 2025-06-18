@@ -5,8 +5,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { Mic, MicOff, Loader2 } from "lucide-react"
 
-// Local fallback type declarations
-
 type Props = {
   onSend: (message: string) => void
   isLoading: boolean

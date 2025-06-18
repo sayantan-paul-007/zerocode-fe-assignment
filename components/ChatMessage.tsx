@@ -1,7 +1,7 @@
 "use client"
 import ReactMarkdown from "react-markdown"
 import { cn } from "@/lib/utils"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback} from "@/components/ui/avatar"
 import { useEffect, useState } from "react"
 import { useUser } from "@/context/userContext"
 import Logo from "./Logo"
