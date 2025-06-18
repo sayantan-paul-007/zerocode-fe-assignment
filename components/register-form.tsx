@@ -84,7 +84,11 @@ export default function RegisterForm() {
               </FormItem>
             )}
           />
-        <Link href='/register' className="text-primary text-right text-[10px] md:text-xs underline">Already have an account?</Link>
+           <div className="py-2 text-right">
+                <Link href='/login' className="text-primary text-right text-[10px] md:text-xs underline">Already have an account?</Link>
+          </div>
+        
+        
           <Button type="submit" className="w-full">
             Register
           </Button>

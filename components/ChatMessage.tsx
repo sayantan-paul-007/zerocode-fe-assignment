@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown"
 import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useEffect, useState } from "react"
+import { useUser } from "@/context/userContext"
 import Logo from "./Logo"
 
 type ChatMessageProps = {
@@ -11,6 +12,8 @@ type ChatMessageProps = {
 }
 
 export function ChatMessage({ role, content}: ChatMessageProps) {
+  const { username } = useUser()
+  const initials = username.slice(0, 2).toUpperCase()
   const isUser = role === "user"
   const [displayedText, setDisplayedText] = useState(isUser ? content : "")
   
@@ -44,9 +47,8 @@ export function ChatMessage({ role, content}: ChatMessageProps) {
         </ReactMarkdown>
        </div>
       {isUser && <Avatar>
-  <AvatarImage src="https://github.com/shadcn.png" />
-  <AvatarFallback>CN</AvatarFallback>
-</Avatar>}
+          <AvatarFallback>{initials}</AvatarFallback>
+        </Avatar>}
     </article>
   )
 }

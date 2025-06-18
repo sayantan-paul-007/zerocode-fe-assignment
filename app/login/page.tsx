@@ -6,7 +6,7 @@ import React from 'react'
 const Login = () => {
   return (
     <main>
-      <nav className='px-6 py-4 flex items-center justify-between'>
+      <nav className='px-6 py-4 flex items-center justify-between fixed w-full'>
         <div className='flex items-center gap-2'>
           <Logo width={44} height={44} />
           <h1 className='text-2xl font-bold font-mono'>ChatterBot</h1>
@@ -14,8 +14,8 @@ const Login = () => {
       <Themetoggle  />
       </nav>
       <section className='flex flex-col  items-center justify-center h-screen'>
-        <div className="border-border">
-           <h1 className="text-2xl font-bold text-center mb-6">Register</h1>
+        <div className="border border-border w-full max-w-md p-6 rounded-lg shadow-md">
+           <h1 className="text-2xl font-bold text-center mb-6">Login</h1>
              <LoginForm />
         </div>
   

@@ -82,7 +82,10 @@ export default function LoginForm() {
               </FormItem>
             )}
           />
-<Link href='/login' className="text-primary text-right text-[10px] md:text-xs underline">Don't have an account?</Link>
+          <div className="py-2 text-right">
+                <Link href='/register' className="text-primary text-right text-[10px] md:text-xs underline">Don't have an account?</Link>
+          </div>
+        
           <Button type="submit" className="w-full">
             Login
           </Button>
