@@ -32,12 +32,13 @@ export function Navbar() {
       </div>
       
       <div className="flex gap-2 items-center">
-        
-        <Button  size="sm" className="text-xs" onClick={handleExport}>
-          <Download className="w-5 h-5 mr-2" />
-          Export Chat
+         <Themetoggle />
+        <Button    onClick={handleExport}>
+          <Download className="w-5 h-5 mr-1 md:hidden" />
+        <p className="hidden md:block md:text-sm ">Export Chat</p>
+          
         </Button>
-        <Themetoggle />
+       
         <LogoutButton />
       </div>
     </section>
